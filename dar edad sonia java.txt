@@ -1,0 +1,32 @@
+package com.mycompany.edad;
+import java.time.LocalDate; // libraria que permite dar formato de fechas/horas
+import java.time.Period;//se utiliza para devolver una opia de este periodo con otro especificad
+import java.util.Scanner; //lee los valores introducidos por el usuario
+public class Edad {
+
+    public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in); // declaramos en variable escanner teclado
+ 
+		System.out.print("Número día nacimiento: ");
+		int dia = teclado.nextInt();
+		System.out.print("Numero mes nacimiento: ");
+		int mes = teclado.nextInt();
+		System.out.print("Año nacimiento: ");
+		int anio = teclado.nextInt();
+		teclado.close();
+ 
+		System.out.println("\nTu edad es: " + calcularEdad(dia, mes, anio));
+                System.out.print("Sonia Jazmin TC");
+ 
+	}
+ //funcion de calcular edad entero estatico
+	static int calcularEdad(int dia, int mes, int anio) { //se debclaran numeron enteros de la funcion calcular edad
+		LocalDate fechaHoy = LocalDate.now(); // la fecha de hoy = fecha de ahora (sistema)
+		LocalDate fechaNacimiento = LocalDate.of(anio, mes, dia);// apagamos fecha de nacimiento (el alor agregado por usuario)
+ 
+		Period periodo = Period.between(fechaNacimiento, fechaHoy);
+ 
+		return periodo.getYears();
+	}
+ 
+}
